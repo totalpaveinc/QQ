@@ -1,19 +1,44 @@
 {
-  "name": "@totalpave/promise",
+  "name": "@totalpave/qq",
   "version": "0.0.0",
-  "main": "index.js",
+  "main": "lib/api.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint ./src ./spec",
+    "lint:fix": "eslint --fix ./src ./spec",
+    "docs": "typedoc --excludePrivate --includeVersion --out ./docs ./src/api.ts",
+    "build": "npm run lint && tsc",
+    "build:release": "tsc",
+    "changelog": "auto-changelog --output CHANGELOG.md -p --release-summary --ignore-commit-pattern chore",
+    "test": "npm run lint && jest",
+    "preversion": "npm test",
+    "version": "NODE_ENV=production npm run-script build:release && npm run-script docs && npm run changelog && git add CHANGELOG.md docs && git commit -m 'chore: changelog'",
+    "postversion": "git push && git push --tags"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/totalpaveinc/promise.git"
+    "url": "git+https://github.com/totalpaveinc/QQ.git"
   },
   "author": "norman.breau@totalpave.com",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/totalpaveinc/promise/issues"
+    "url": "https://github.com/totalpaveinc/QQ/issues"
   },
-  "homepage": "https://github.com/totalpaveinc/promise#readme",
-  "description": ""
+  "homepage": "https://github.com/totalpaveinc/QQ#readme",
+  "description": "A Promise wrapper library",
+  "devDependencies": {
+    "@jest/types": "30.2.0",
+    "@totalpave/eslint-plugin": "7.0.16",
+    "@types/jest": "30.0.0",
+    "jest": "30.2.0",
+    "ts-jest": "29.4.5",
+    "ts-node": "10.9.2",
+    "typescript": "5.9.3"
+  },
+  "dependencies": {
+    "tslib": "2.8.1"
+  }
 }

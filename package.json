@@ -31,13 +31,13 @@
   "description": "A Promise wrapper library",
   "devDependencies": {
     "@jest/types": "30.2.0",
-    "@totalpave/eslint-plugin": "7.0.16",
+    "@totalpave/eslint-plugin": "7.0.17",
     "@types/jest": "30.0.0",
     "auto-changelog": "2.5.0",
     "jest": "30.2.0",
-    "ts-jest": "29.4.5",
+    "ts-jest": "29.4.6",
     "ts-node": "10.9.2",
-    "typedoc": "0.28.14",
+    "typedoc": "0.28.15",
     "typedoc-plugin-markdown": "4.9.0",
     "typescript": "5.9.3"
   },
